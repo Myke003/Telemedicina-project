@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeleMed - Plataforma de Telemedicina</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+</head>
+<body class="smooth-scroll">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">TeleMed</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#beneficios">Beneficios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-lg-3" href="#consulta">Agendar Consulta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="inicio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Atención médica profesional desde tu hogar</h1>
+                    <p class="lead mb-4">Conectamos pacientes con médicos especialistas a través de consultas virtuales seguras y confiables.</p>
+                    <a href="#consulta" class="btn btn-primary btn-lg">Comenzar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="py-5" id="servicios">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Nuestros Servicios</h2>
+                <p class="text-muted">Ofrecemos una amplia gama de servicios médicos online</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 service-card border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-camera-video icon-large mb-3"></i>
+                            <h5 class="card-title">Consultas por Video</h5>
+                            <p class="card-text text-muted">Interactúa con tu médico a través de videollamadas seguras.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 service-card border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-calendar-check icon-large mb-3"></i>
+                            <h5 class="card-title">Agenda tu Cita</h5>
+                            <p class="card-text text-muted">Sistema de reservas disponible 24/7 para tu conveniencia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 service-card border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-file-text icon-large mb-3"></i>
+                            <h5 class="card-title">Recetas Médicas</h5>
+                            <p class="card-text text-muted">Recibe tus recetas médicas digitales de forma segura.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-5 bg-light" id="beneficios">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">¿Por qué elegirnos?</h2>
+                <p class="text-muted">Descubre las ventajas de usar nuestra plataforma</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-shield-check text-primary fs-4 me-3"></i>
+                        <div>
+                            <h5>Seguridad Garantizada</h5>
+                            <p class="text-muted">Tus datos médicos están protegidos con la más alta seguridad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-clock text-primary fs-4 me-3"></i>
+                        <div>
+                            <h5>Atención 24/7</h5>
+                            <p class="text-muted">Acceso a servicios médicos en cualquier momento.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-star text-primary fs-4 me-3"></i>
+                        <div>
+                            <h5>Médicos Certificados</h5>
+                            <p class="text-muted">Personal médico altamente calificado y con experiencia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white" id="consulta">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">¿Listo para comenzar?</h2>
+            <p class="lead mb-4">Agenda tu primera consulta virtual hoy mismo</p>
+            <button class="btn btn-light btn-lg px-5">Agendar Ahora</button>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="py-5" id="contacto">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold">Contáctanos</h2>
+                        <p class="text-muted">¿Tienes alguna pregunta? Estamos aquí para ayudarte</p>
+                    </div>
+
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Nombre completo">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Correo electrónico">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Mensaje"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="fw-bold mb-3">TeleMed</h5>
+                    <p class="small">Brindando atención médica de calidad a través de la tecnología.</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="fw-bold mb-3">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio" class="text-white-50">Inicio</a></li>
+                        <li><a href="#servicios" class="text-white-50">Servicios</a></li>
+                        <li><a href="#beneficios" class="text-white-50">Beneficios</a></li>
+                        <li><a href="#contacto" class="text-white-50">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Contáctanos</h5>
+                    <ul class="list-unstyled text-white-50">
+                        <li>Email: info@telemed.com</li>
+                        <li>Teléfono: (123) 456-7890</li>
+                    </ul>
+
+                    <ul class="list-unstyled text-white-50 d-flex">
+                      <!--Insertar el enlace dentro del href de la lista-->
+                      <li class="me-3">
+
+                        <a href="https://www.whatsapp.com/?lang=es_LA"class="text-white-50" target="_blank">
+                          <i class="bi bi-whatsapp"></i>
+                        </a>
+
+                      </li>
+
+                      <li class="me-3">
+
+                        <a href="https://www.facebook.com/?locale=es_LA" class="text-white-50" target="_blank">
+                          <i class="bi bi-facebook"></i>
+                        </a>
+                      </li>
+                      <li class="me-3">
+                        <a href="https://www.instagram.com/?hl=es" class="text-white-50" target="_blank">
+                          <i class="bi bi-instagram"></i>
+                        </a>
+                      </li >
+                      <li class="me-3">
+                        <a href="https://github.com/Myke003" class="text-white-50" target="_blank">
+                          <i class="bi bi-github"></i>
+                        </a>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center text-white-50 small">
+                © 2024 TeleMed. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
