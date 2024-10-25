@@ -7,6 +7,7 @@ class EmailSender:
     def __init__(self):
         # Email y contraseña de mi app de google (totalmente inseguro xd)
         self._email_sender = 'testingcorreo289@gmail.com' 
+        #self._password_sender = 'lpse jcjg oxat' para probar que pasa si no funciona 
         self._password_sender = 'lpse jcjg oxat udql'
 
     def send_notification(self, client_email, client, date):
@@ -36,10 +37,13 @@ class AppointmentManager:
         self._email_sender = email_sender
 
     def schedule_appointment(self, client, client_email, date):  # Agregado client_email como parámetro
-        self._email_sender.send_notification(client_email, client, date)  # Corrección aquí
-        print(f'Cita programada para {client}, {date}')
+        success = self._email_sender.send_notification(client_email, client, date)
+        
+        if success:
+            print(f'Cita programada para {client}, {date}')
+        else:
+            print(f'Error al enviar la notificación. La cita para {client} no se programó.')
 
-# Instanciación de las clases
 email_sender = EmailSender()
 appointments = AppointmentManager(email_sender)
 
