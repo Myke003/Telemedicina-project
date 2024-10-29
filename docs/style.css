@@ -1,11 +1,93 @@
-.hero-section {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url('/api/placeholder/1920/1080');
+:root {
+    --blue-bg: #e7f8fb;
+    --blue: #0d6efd;
+}
+
+
+.hero-fullscreen {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: relative;
+    height: 100vh;
+    width: 100%;
     background-size: cover;
     background-position: center;
-    color: white;
-    padding: 120px 0;
+    background-repeat: no-repeat;
 }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Animaciones */
+.animate-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.carousel-item.active .animate-up:nth-child(1) { animation-delay: 0.3s; }
+.carousel-item.active .animate-up:nth-child(2) { animation-delay: 0.5s; }
+.carousel-item.active .animate-up:nth-child(3) { animation-delay: 0.7s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Controles del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.carousel-indicators {
+    bottom: 3rem;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 8px;
+}
+
+/* Ajuste responsive */
+@media (max-width: 768px) {
+    .hero-content {
+        text-align: center;
+        padding: 0 15px;
+        background-position: center;
+    }
+    
+    .display-3 {
+        font-size: calc(1.525rem + 3.3vw);
+    }
+}
+
+/* Transición suave entre slides */
+.carousel-item {
+    transition: transform 1s linear;
+}
+
 .service-card {
     transition: transform 0.3s ease;
 }
