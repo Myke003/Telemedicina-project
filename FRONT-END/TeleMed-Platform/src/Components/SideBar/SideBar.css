@@ -1,0 +1,39 @@
+/* src/Components/Sidebar/Sidebar.css */
+
+.sidebar {
+    width: 250px; /* Ancho del sidebar grande */
+    height: 100vh; /* Altura completa de la ventana */
+    color: #212529; /* Color del texto (negro) para mejor contraste */
+    padding: 20px; /* Espaciado interno */
+    position: fixed; /* Fija el sidebar en la pantalla */
+    top: 0; /* Alineado a la parte superior */
+    left: 0; /* Alineado a la izquierda */
+    overflow-y: auto; /* Agrega scroll si el contenido es más largo que la altura */
+    transition: width 0.3s; /* Transición suave para el ancho */
+  }
+  
+  .sidebar-title {
+    margin-bottom: 20px; /* Espaciado inferior para el título */
+    font-size: 24px; /* Tamaño del texto del título */
+    font-weight: bold; /* Negrita para el título */
+    display: block; /* Muestra el título como bloque */
+  }
+  
+  .sidebar-list {
+    list-style-type: none; /* Sin viñetas */
+    padding: 0; /* Sin padding */
+  }
+  
+  .sidebar-item {
+    color: #212529; /* Color de texto (negro) para mejor contraste */
+    text-decoration: none; /* Sin subrayado */
+    display: block; /* Cada enlace ocupa toda la línea */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+  }
+  
+  .sidebar-item:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Color de fondo al pasar el mouse */
+  }
+  
