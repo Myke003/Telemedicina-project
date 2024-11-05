@@ -1,4 +1,4 @@
-from database.database import Database
+from Database.database import Database
 
 class ReviewManager:
     def __init__(self, db):
