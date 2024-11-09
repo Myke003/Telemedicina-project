@@ -1,0 +1,38 @@
+.logo-container {
+  margin: 0.5rem 0 4rem;
+}
+
+.sidebar {
+  padding: 1rem;
+  background-color: #f4f4f4;
+  height: 100vh; /* Ajusta según el diseño */
+  width: 250px; /* Ajusta el ancho según el diseño */
+}
+
+.sidebar-links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-links-container li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.sidebar-links-container li a {
+  flex: 1;
+  text-decoration: none;
+  color: black;
+  padding: 10px 15px;
+  font-size: 20px;
+}
+
+.sidebar-links-container li:hover {
+  background-color: #00ced1; /* Cambié 'aqua' a un color más específico */
+}
