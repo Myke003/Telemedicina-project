@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import { Button, TextField, Paper, Typography, Box } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import './login.css';
+import React, { useState } from "react";
+import { Button, TextField, Paper, Typography, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../js/context/AuthContext";
+import "./login.css";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { login } = useAuth(); // Obtén la función login del contexto
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  // Funciones para actualizar los estados de email y contraseña
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -20,21 +23,17 @@ const Login = () => {
     e.preventDefault();
 
     if (!email || !password) {
-      alert('Por favor, ingresa tu correo y contraseña.');
+      alert("Por favor, ingresa tu correo y contraseña.");
       return;
     }
 
-    // Aquí podrías agregar la lógica de autenticación (API, etc.)
-    console.log('Email:', email);
-    console.log('Password:', password);
-
-    if (email === 'admin' && password === 'admin') {
-      console.log('Iniciaste sesion');
-      alert('Iniciaste sesion');
-      navigate('/');
+    // Lógica de autenticación (puedes reemplazar esto con un backend real)
+    if (email === "admin" && password === "admin") {
+      alert("Iniciaste sesión");
+      login(); // Marca al usuario como autenticado
+      navigate("/"); // Redirige a la página principal después del login
     } else {
-      console.log('Usuario y/o contraseña incorrecto');
-      alert('Usuario y/o contraseña incorrecto');
+      alert("Usuario y/o contraseña incorrecto");
     }
   };
 
@@ -47,7 +46,12 @@ const Login = () => {
         <Typography variant="h4" component="h1" color="primary" gutterBottom>
           Bienvenido a TeleMed
         </Typography>
-        <Typography variant="subtitle1" component="p" color="textSecondary" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          component="p"
+          color="textSecondary"
+          gutterBottom
+        >
           Ingresa tus credenciales para acceder a nuestra plataforma de salud
         </Typography>
         <form onSubmit={handleSubmit} className="input-container">
@@ -70,15 +74,28 @@ const Login = () => {
             value={password}
             required
           />
-          <Button type="submit" className="login-btn" variant="contained" color="primary">
+          <Button
+            type="submit"
+            className="login-btn"
+            variant="contained"
+            color="primary"
+          >
             Iniciar sesión
           </Button>
         </form>
         <Box className="footer-container">
-          <Typography variant="body2" className="login-text" onClick={() => navigate('/forgotPassword')}>
+          <Typography
+            variant="body2"
+            className="login-text"
+            onClick={() => navigate("/forgotPassword")}
+          >
             ¿Olvidaste tu contraseña?
           </Typography>
-          <Typography variant="body2" className="login-text" onClick={() => navigate('/register')}>
+          <Typography
+            variant="body2"
+            className="login-text"
+            onClick={() => navigate("/register")}
+          >
             Regístrate aquí
           </Typography>
         </Box>

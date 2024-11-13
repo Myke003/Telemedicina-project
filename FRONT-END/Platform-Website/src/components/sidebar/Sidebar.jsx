@@ -1,27 +1,52 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import './sidebar.css';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import "./sidebar.css";
 
 const Sidebar = () => {
+  const [isExpanded, setIsExpanded] = useState(true);
+  const location = useLocation(); // Para obtener la ruta actual
+
   const menuItems = [
-    { path: "/", label: "Inicio" },
-    { path: "/profile", label: "Agenda" },
-    { path: "/video-call", label: "Videollamada" },
-    { path: "/chat", label: "Chat" },
-    { path: "/medical-history", label: "Historial Médico" },
-    { path: "/prescription", label: "Recetas" },
+    { path: "/", label: "Inicio", icon: "bi bi-house-door" },
+    { path: "/appointments", label: "Agendar Cita", icon: "bi bi-folder-plus" },
+    { path: "/agenda", label: "Agenda", icon: "bi bi-calendar-event" },
+    { path: "/video-call", label: "Videollamada", icon: "bi bi-camera-video" },
+    { path: "/chat", label: "Chat", icon: "bi bi-chat" },
+    { path: "/medical-history", label: "Historial Médico", icon: "bi bi-file-earmark-medical" },
+    { path: "/prescription", label: "Recetas", icon: "bi bi-receipt" },
   ];
 
+  const toggleSidebar = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <aside className="sidebar">
-      <nav>
+    <aside className={`sidebar ${isExpanded ? "expanded" : "collapsed"}`}>
+      <div className="sidebar-header">
         <div className="logo-container">
-          <h1>TeleMed</h1>
+          {isExpanded ? (
+            <h1 className="logo">TeleMed</h1>
+          ) : (
+            <i className="bi bi-arrow-bar-right toggle-icon" onClick={toggleSidebar}></i> // Icono de expansión cuando el sidebar está colapsado
+          )}
         </div>
+        {isExpanded && (
+          <button className="toggle-btn" onClick={toggleSidebar}>
+            {"<<"}
+          </button>
+        )}
+      </div>
+      <nav>
         <ul className="sidebar-links-container">
           {menuItems.map((item, index) => (
-            <li key={index}>
-              <Link to={item.path}>{item.label}</Link>
+            <li
+              key={index}
+              className={`sidebar-link ${location.pathname === item.path ? "active" : ""}`} // Agrega la clase "active"
+            >
+              <Link to={item.path}>
+                <i className={`${item.icon} icon-style`}></i>
+                {isExpanded && <span className="label">{item.label}</span>}
+              </Link>
             </li>
           ))}
         </ul>

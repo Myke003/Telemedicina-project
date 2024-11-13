@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home/Home";
-import Profile from "../pages/Profile/Profile";
 import Appointments from "../pages/Appointments/Appointments";
 import VideoCall from "../pages/Videocall/VideoCall";
 import Chat from "../pages/Chat/Chat";
@@ -10,25 +9,75 @@ import Layout from "../pages/Layout/Layout";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
+import Agenda from "../pages/Agenda/Agenda";
+import PrivateRoute from "./PrivateRoute"; // Importa la ruta privada
 
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* Rutas públicas  (Login, register, etc) */}
+      {/* Rutas públicas */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
 
-      {/* Rutas protegidas, disponibles despues de iniciar sesion*/}
+      {/* Rutas protegidas */}
       <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />{" "}
-        <Route path="/profile" element={<Profile />} />{" "}
-        <Route path="/appointments" element={<Appointments />} />{" "}
-        <Route path="/video-call" element={<VideoCall />} />{" "}
-        <Route path="/chat" element={<Chat />} />{" "}
-        <Route path="/medical-history" element={<MedicalHistory />} />{" "}
-        <Route path="/prescription" element={<Prescription />} />{" "}
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/appointments"
+          element={
+            <PrivateRoute>
+              <Appointments />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/video-call"
+          element={
+            <PrivateRoute>
+              <VideoCall />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/chat"
+          element={
+            <PrivateRoute>
+              <Chat />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/medical-history"
+          element={
+            <PrivateRoute>
+              <MedicalHistory />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/prescription"
+          element={
+            <PrivateRoute>
+              <Prescription />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/agenda"
+          element={
+            <PrivateRoute>
+              <Agenda />
+            </PrivateRoute>
+          }
+        />
       </Route>
     </Routes>
   );

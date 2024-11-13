@@ -1,38 +1,88 @@
-.logo-container {
-  margin: 0.5rem 0 4rem;
+.sidebar {
+  background-color: #f5f5f5;
+  border-right: 1px solid #e0e0e0;
+  padding: 20px;
+  width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
 }
 
-.sidebar {
-  padding: 1rem;
-  background-color: #f4f4f4;
-  height: 100vh; /* Ajusta según el diseño */
-  width: 250px; /* Ajusta el ancho según el diseño */
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-container {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.logo {
+  transition: font-size 0.3s ease;
+}
+
+.logo.contracted {
+  font-size: 14px;
+}
+
+.toggle-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
 }
 
 .sidebar-links-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  list-style-type: none;
+  padding: 0;
 }
 
-.sidebar-links-container li {
+.sidebar-link {
+  margin-bottom: 10px;
+}
+
+.sidebar-link a {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  cursor: pointer;
-  height: 40px;
-  border-radius: 8px;
-  transition: background-color 0.3s;
-}
-
-.sidebar-links-container li a {
-  flex: 1;
   text-decoration: none;
-  color: black;
-  padding: 10px 15px;
-  font-size: 20px;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.sidebar-links-container li:hover {
-  background-color: #00ced1; /* Cambié 'aqua' a un color más específico */
+.sidebar-link a:hover {
+  background-color: #e0e0e0;
+}
+
+.sidebar-link .icon {
+  width: 20px;
+  height: 20px;
+  background-color: #ccc;
+  margin-right: 8px;
+}
+
+.sidebar.collapsed .sidebar-link .label {
+  display: none;
+}
+
+.icon-style {
+  margin-right: 8px;
+  font-size: 1.5rem; 
+  font-weight: bold;
+}
+
+/* Estilos para el estado activo */
+.sidebar-link.active a {
+  background-color: #e0e0e0; /* Cambia esto por el color que desees */
+  font-weight: bold;
 }

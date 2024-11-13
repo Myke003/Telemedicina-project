@@ -1,11 +1,15 @@
 // src/pages/Home.jsx
-import React from 'react';
+import React from "react";
+import "./home.css";
 
 const Home = () => {
   return (
-    <div className="home">
-      <h2>Bienvenido a la Plataforma de Telemedicina</h2>
-      <p>Explora las funcionalidades y conecta con médicos desde la comodidad de tu hogar.</p>
+    <div className="inicio-container">
+      <h1>Bienvenido a TeleMed</h1>
+      <p>
+        Conéctate fácilmente con médicos profesionales, programa tus citas y
+        más.
+      </p>
     </div>
   );
 };
