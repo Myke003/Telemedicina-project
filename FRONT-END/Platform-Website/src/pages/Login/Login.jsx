@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, TextField, Paper, Typography, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../js/context/AuthContext";
+import axios from "axios";  // Asegúrate de importar axios
 import "./login.css";
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
   const { login } = useAuth(); // Obtén la función login del contexto
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");  // Para manejar errores
 
   // Funciones para actualizar los estados de email y contraseña
   const handleEmailChange = (e) => {
@@ -19,7 +21,7 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
@@ -27,13 +29,25 @@ const Login = () => {
       return;
     }
 
-    // Lógica de autenticación (puedes reemplazar esto con un backend real)
-    if (email === "admin" && password === "admin") {
-      alert("Iniciaste sesión");
-      login(); // Marca al usuario como autenticado
+    try {
+      // Realiza la petición al backend para autenticar al usuario
+      const response = await axios.post("http://127.0.0.1:5000/login", {
+        email,
+        password
+      });
+
+      // El backend debería devolver el token en la respuesta
+      const token = response.data.token;
+
+      // Guardar el token en el localStorage o contexto
+      localStorage.setItem("token", token);  // Almacenar el token
+
+      login();  // Marca al usuario como autenticado en el contexto
       navigate("/"); // Redirige a la página principal después del login
-    } else {
-      alert("Usuario y/o contraseña incorrecto");
+    } catch (err) {
+      // Manejo de errores
+      setError("Usuario y/o contraseña incorrecto");
+      console.error("Error de login:", err);
     }
   };
 
@@ -83,6 +97,7 @@ const Login = () => {
             Iniciar sesión
           </Button>
         </form>
+        {error && <Typography color="error">{error}</Typography>}
         <Box className="footer-container">
           <Typography
             variant="body2"
