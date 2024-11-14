@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, TextField, Paper, Typography, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../js/context/AuthContext";
-import axios from "axios";  // Asegúrate de importar axios
+import axios from "axios";
 import "./login.css";
 
 const Login = () => {
@@ -29,6 +29,8 @@ const Login = () => {
       return;
     }
 
+    console.log("Email", email);
+    console.log("Passowrd", password);
     try {
       // Realiza la petición al backend para autenticar al usuario
       const response = await axios.post("http://127.0.0.1:5000/login", {
@@ -46,7 +48,8 @@ const Login = () => {
       navigate("/"); // Redirige a la página principal después del login
     } catch (err) {
       // Manejo de errores
-      setError("Usuario y/o contraseña incorrecto");
+      const errorMessage = err.response?.data?.error || "Error desconocido";
+      setError(errorMessage);  // Mostrar el mensaje de error del backend
       console.error("Error de login:", err);
     }
   };

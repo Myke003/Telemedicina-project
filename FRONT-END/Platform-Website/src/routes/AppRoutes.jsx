@@ -10,7 +10,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import Agenda from "../pages/Agenda/Agenda";
-import PrivateRoute from "./PrivateRoute"; // Importa la ruta privada
+import PrivateRoute from "./PrivateRoute"; // Asegúrate de importar PrivateRoute
 
 const AppRoutes = () => {
   return (
