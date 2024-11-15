@@ -4,17 +4,16 @@ import datetime
 import jwt
 from app import mysql
 from app.config import Config
-from werkzeug.security import check_password_hash
 
 users_bp = Blueprint('users', __name__)
 
-#Ruta para el login
-
+# Ruta para el login
+@users_bp.route('/login', methods=['POST'])
 def login():
     data = request.json
     if not data or 'email' not in data or 'password' not in data:
         return jsonify({'error': 'Datos incompletos'}), 400
-    
+
     cursor = mysql.connection.cursor()
     cursor.execute('SELECT id, email, password, role FROM users WHERE email = %s', (data['email'],))
     user = cursor.fetchone()
@@ -23,19 +22,18 @@ def login():
     if user is None:
         return jsonify({'error': 'Usuario no encontrado'}), 404
 
-    # Verificar si la contraseña es correcta
-    if not check_password_hash(user[2], data['password']):
+    # Verificar si la contraseña ingresada coincide con la almacenada
+    if user[2] != data['password']:  # Aquí solo comparamos texto plano
         return jsonify({'error': 'Contraseña incorrecta'}), 401
 
-    # Crear el payload del JWT
+    # Si la contraseña es correcta, procedemos con la creación del JWT
     payload = {
         'user_id': user[0],
         'email': user[1],
         'role': user[3],
-        'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # El token expirará en 1 hora
+        'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
     }
 
-    # Firmar el JWT
     token = jwt.encode(payload, Config.SECRET_KEY, algorithm='HS256')
 
     return jsonify({
@@ -43,7 +41,7 @@ def login():
         'token': token
     }), 200
 
-
+# Ruta para obtener todos los usuarios
 @users_bp.route('/users', methods=['GET'])
 def get_users():
     try:
@@ -60,6 +58,7 @@ def get_users():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# Ruta para obtener un usuario por ID
 @users_bp.route('/users/<int:id>', methods=['GET'])
 def get_user(id):
     try:
@@ -77,17 +76,29 @@ def get_user(id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# Ruta para crear un nuevo usuario
 @users_bp.route('/users', methods=['POST'])
 def create_user():
     try:
         data = request.json
         if not data or 'email' not in data or 'password' not in data:
             return jsonify({'error': 'Datos incompletos'}), 400
-        new_user_id = create_new_user(data)
-        return jsonify({'message': 'Usuario creado exitosamente', 'id': new_user_id}), 201
+
+        email = data['email']
+        password = data['password']
+        # Puedes agregar más campos de usuario aquí si es necesario
+
+        # Guardar el usuario en la base de datos
+        cursor = mysql.connection.cursor()
+        cursor.execute('INSERT INTO users (email, password, ...) VALUES (%s, %s, ...)', (email, password))
+        mysql.connection.commit()
+        cursor.close()
+
+        return jsonify({'message': 'Usuario creado exitosamente'}), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# Ruta para actualizar un usuario por ID
 @users_bp.route('/users/<int:id>', methods=['PUT'])
 def update_user(id):
     try:
@@ -101,6 +112,7 @@ def update_user(id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# Ruta para eliminar un usuario por ID
 @users_bp.route('/users/<int:id>', methods=['DELETE'])
 def delete_user(id):
     try:
